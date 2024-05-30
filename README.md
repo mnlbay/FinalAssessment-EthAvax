@@ -45,6 +45,9 @@ After deploying the contract, you can interact with it using the following funct
 - 8202636
 - Alexander Yeoj B. Bombais
 
+## Caution
+- We encountered as the snowtrace does not give any more API keys, we are tasked to continue with Module 4 without this API and just use remix
+
 
 
 
