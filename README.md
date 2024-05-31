@@ -45,6 +45,11 @@ After deploying the contract, you can interact with it using the following funct
 - 8202636
 - Alexander Yeoj B. Bombais
 
+## Revisions
+- We added a new mapping redeemedItems that maps an address to an array of item names.
+- The redeem function now also records the item name in the redeemedItems mapping after a successful redemption.
+- A new function getRedeemedItems allows anyone to view the list of items redeemed by a particular player.
+
 
 
 
