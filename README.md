@@ -1,54 +1,75 @@
-# DegenToken
+# Project: Degen Token (ERC-20): Unlocking the Future of Gaming
 
-DegenToken is an ERC20 token deployed on the Avalanche network for Degen Gaming. This smart contract includes features such as minting new tokens, transferring tokens, redeeming tokens for in-game items, checking token balances, and burning tokens.
+## Combined README for In-Game Store and DegenToken Contracts
 
-## Features
+This document provides an overview of two interconnected Solidity contracts:
 
-- **Minting New Tokens**: The owner can mint new tokens and distribute them to players as rewards.
-- **Transferring Tokens**: Players can transfer their tokens to others.
-- **Redeeming Tokens**: Players can redeem their tokens for items in the in-game store.
-- **Checking Token Balance**: Players can check their token balance at any time.
-- **Burning Tokens**: Anyone can burn tokens that they own if they are no longer needed.
+**1. InGameStore.sol**
 
-## Contract Details
+This contract implements a system for managing in-game items within a decentralized application (dApp). Players can use an ERC20 token (DegenToken) to redeem items from the store.
 
-The contract is built using OpenZeppelin's ERC20 and Ownable implementations.
+**Features:**
 
-### Items in the Game Store
+* **Item Management:**
+    * Add new items with name, price, and stock.
+    * Track available stock for each item.
+* **Redemption:**
+    * Players can redeem items using DegenTokens.
+    * Secure token transfer using `transferFrom`.
+* **Information Retrieval:**
+    * Get details of an item by name.
+    * View a player's redeemed items.
+    * Get a list of available items in the store.
+* **Player Functions:**
+    * View DegenToken balance using `balanceOf`.
+    * Transfer DegenTokens to other players using `transfer`.
 
-The contract includes some predefined items in the in-game store:
-- Legendary Sword: 100 DEGEN tokens
-- Epic Shield: 75 DEGEN tokens
-- Rare Potion: 50 DEGEN tokens
+**2. DegenToken.sol**
 
-## Usage
+This contract defines a custom ERC20 token (DegenToken) used for in-game purchases in the `InGameStore.sol` contract.
 
-### Deploying the Contract
+**Features:**
 
-1. Open [Remix](https://remix.ethereum.org/).
-2. Create a new file named `DegenGaming.sol`.
-3. Copy and paste the contract code into `DegenGaming.sol`.
-4. Compile the contract using the appropriate compiler version.
-5. Deploy the contract by passing the initial owner's address as the constructor argument.
+* Implements the ERC20 standard for token management.
+* Allows the owner (defined in the constructor) to mint new tokens.
+* Enables token burning by the owner or token holders.
+* Allows users to transfer their tokens to another account address
+* Allows user to view their currenct amount of token in their balancce
 
-### Interacting with the Contract
+**Integration:**
 
-After deploying the contract, you can interact with it using the following functions:
+The `InGameStore.sol` contract interacts with the `DegenToken.sol` contract in the following way:
 
-- **Mint Tokens**
-- **Transfer Tokens**
-- **Redeem Tokens for Items**
-- **Check Token Balance**
-- **Burn Tokens**
+* The `InGameStore` constructor takes the address of the deployed `DegenToken` contract.
+* When a player redeems an item, the `InGameStore` uses `transferFrom` to transfer the required amount of `DegenToken` from the player's wallet to the contract's address.
 
-## Author
-- 8202636
-- Alexander Yeoj B. Bombais
+**Deployment and Usage:**
 
-## Revisions
-- We added a new mapping redeemedItems that maps an address to an array of item names.
-- The redeem function now also records the item name in the redeemedItems mapping after a successful redemption.
-- A new function getRedeemedItems allows anyone to view the list of items redeemed by a particular player.
+1. **Deploy DegenToken:**
+    Compile and deploy `DegenToken.sol`.
+    Note the address of the deployed `DegenToken` contract.
+
+2. **Deploy InGameStore:**
+    Compile and deploy `InGameStore.sol`.
+    Provide the address of the deployed `DegenToken` contract in the `InGameStore` constructor.
+
+3. **Usage:**
+    Use functions from `InGameStore.sol` to manage in-game items and interact with players.
+    Use the `balanceOf` function of the `DegenToken` contract to view a player's balance.
+    Use the `transfer` function of the `DegenToken` contract to transfer tokens between players.
+
+**Important Notes:**
+
+* This is a sample implementation and may need further security considerations before production deployment.
+* Proper testing is crucial for both contracts.
+
+**Author:**
+Bombais, Alexander Yeoj B.
+8202636
+
+**License:**
+
+Both contracts are licensed under the MIT License (see LICENSE file).
 
 
 
