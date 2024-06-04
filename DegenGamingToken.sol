@@ -18,5 +18,10 @@ contract DegenToken is ERC20, Ownable {
     function burn(uint256 amount) external {
         _burn(msg.sender, amount);
     }
+  // Transfer tokens from one address to another
+    function transfer(address recipient, uint256 amount) public override {
+        // Call the internal ERC20 `_transfer` function for secure transfers
+        _transfer(msg.sender, recipient, amount);
+    }
 
 }
