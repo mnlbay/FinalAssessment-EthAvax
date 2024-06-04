@@ -64,8 +64,9 @@ The `InGameStore.sol` contract interacts with the `DegenToken.sol` contract in t
 * Proper testing is crucial for both contracts.
 
 **Author:**
-Bombais, Alexander Yeoj B.
-8202636
+
+-Bombais, Alexander Yeoj B.
+-8202636
 
 **License:**
 
