@@ -65,8 +65,8 @@ The `InGameStore.sol` contract interacts with the `DegenToken.sol` contract in t
 
 **Author:**
 
--Bombais, Alexander Yeoj B.
--8202636
+Bombais, Alexander Yeoj B.
+8202636
 
 **License:**
 
