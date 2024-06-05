@@ -1,83 +1,63 @@
-# Project: Degen Token (ERC-20): Unlocking the Future of Gaming
+# EcommerceStore Contract
 
-## Combined README for In-Game Store and DegenToken Contracts
+The EcommerceStore contract is a decentralized e-commerce platform built on the Ethereum blockchain. It enables users to redeem items from a store using a custom ERC20 token.
 
-This document provides an overview of two interconnected Solidity contracts:
+## Overview
 
-**1. InGameStore.sol**
+The contract consists of several components:
 
-This contract implements a system for managing in-game items within a decentralized application (dApp). Players can use an ERC20 token (DegenToken) to redeem items from the store.
+1. **EcommerceToken**: This is an ERC20 token contract used as the currency within the e-commerce platform. Users can earn tokens as rewards and use them to redeem items from the store.
 
-**Features:**
+2. **EcommerceStore**: This contract represents the store where items are listed for redemption. It manages user accounts, store items, and the redemption process.
 
-* **Item Management:**
-    * Add new items with name, price, and stock.
-    * Track available stock for each item.
-* **Redemption:**
-    * Players can redeem items using DegenTokens.
-    * Secure token transfer using `transferFrom`.
-* **Information Retrieval:**
-    * Get details of an item by name.
-    * View a player's redeemed items.
-    * Get a list of available items in the store.
-* **Player Functions:**
-    * View DegenToken balance using `balanceOf`.
-    * Transfer DegenTokens to other players using `transfer`.
+## Features
 
-**2. DegenToken.sol**
+The EcommerceStore contract provides the following features:
 
-This contract defines a custom ERC20 token (DegenToken) used for in-game purchases in the `InGameStore.sol` contract.
+- **Minting New Tokens**: The owner can mint new tokens and distribute them to users as rewards.
 
-**Features:**
+- **Transferring Tokens**: Users can transfer their tokens to others.
 
-* Implements the ERC20 standard for token management.
-* Allows the owner (defined in the constructor) to mint new tokens.
-* Enables token burning by the owner or token holders.
-* Allows users to transfer their tokens to another account address
-* Allows user to view their currenct amount of token in their balancce
+- **Redeeming Tokens**: Users can redeem their tokens for items in the in-game store.
 
-**Integration:**
+- **Checking Token Balance**: Users can check their token balance at any time.
 
-The `InGameStore.sol` contract interacts with the `DegenToken.sol` contract in the following way:
+- **Burning Tokens**: Anyone can burn tokens that they own and are no longer needed.
 
-* The `InGameStore` constructor takes the address of the deployed `DegenToken` contract.
-* When a player redeems an item, the `InGameStore` uses `transferFrom` to transfer the required amount of `DegenToken` from the player's wallet to the contract's address.
+## Usage
 
-**Deployment and Usage:**
+### Deploying the Contract
 
-1. **Deploy DegenToken:**
-    Compile and deploy `DegenToken.sol`.
-    Note the address of the deployed `DegenToken` contract.
+To deploy the contract, deploy both the EcommerceToken and EcommerceStore contracts to the Ethereum blockchain. Ensure that you deploy the EcommerceToken contract first and pass its address when deploying the EcommerceStore contract.
 
-2. **Deploy InGameStore:**
-    Compile and deploy `InGameStore.sol`.
-    Provide the address of the deployed `DegenToken` contract in the `InGameStore` constructor.
+### Minting New Tokens
 
-3. **Usage:**
-    Use functions from `InGameStore.sol` to manage in-game items and interact with players.
-    Use the `balanceOf` function of the `DegenToken` contract to view a player's balance.
-    Use the `transfer` function of the `DegenToken` contract to transfer tokens between players.
+Only the owner of the contract can mint new tokens. To mint new tokens, call the `mint` function in the EcommerceToken contract.
 
-**Important Notes:**
+### Transferring Tokens
 
-* This is a sample implementation and may need further security considerations before production deployment.
-* Proper testing is crucial for both contracts.
+Users can transfer their tokens to others by calling the `transfer` function in the EcommerceToken contract.
 
-**Author:**
+### Redeeming Tokens
 
-Bombais, Alexander Yeoj B.
-8202636
+Users can redeem their tokens for items from the store by calling the `redeem` function in the EcommerceStore contract.
 
-**License:**
+### Checking Token Balance
 
-Both contracts are licensed under the MIT License (see LICENSE file).
+Users can check their token balance at any time by calling the `balanceOf` function in the EcommerceToken contract.
 
+### Burning Tokens
 
+Anyone can burn tokens that they own and no longer need by calling the `burn` function in the EcommerceToken contract.
 
+## Testing
 
+Before deploying the contract to the mainnet or any public testnet, it's recommended to thoroughly test the contract functionality on a local development environment or testnet.
 
+## Author
+- 8202636. 
+- Alexander Yeoj B. Bombais
 
+## License
 
-
-
-
+This contract is released under the MIT License. See [LICENSE](LICENSE) for details.
